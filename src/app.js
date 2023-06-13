@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { UserForm, Home} from './comp';
+import { UserForm, Home, Activities, MyRoutines, Routines} from './comp';
 import { Route, Link } from 'react-router-dom';
 
 const App = () => {
@@ -10,15 +10,30 @@ const App = () => {
     return (
         <>
             <nav>
+                <Link exact to='/routines'>Routines</Link>-
+                <Link exact to='/activities'>Activities</Link>-
+                <Link exact to='/:formResLogin'>Sign In / Sign Up</Link>-
                 <Link to='/' className='links'> Home </Link>
             </nav>
 
             <Route exact path='/'>
-                <Home />
+                <Home/>
             </Route>
 
-            <Route path='/profile/:formResLogin'>
+            <Route path='/:formResLogin'>
                 <UserForm setToken={setToken} setUserData={setUserData} />
+            </Route>
+
+            <Route exact path='/activities'>
+                <Activities/>
+            </Route>
+
+            <Route exact path='/routines'>
+                <Routines/>
+            </Route>
+
+            <Route exact path='/myRoutines'>
+                <MyRoutines/>
             </Route>
         </>
     )
