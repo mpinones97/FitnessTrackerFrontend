@@ -1,9 +1,9 @@
 import React from 'react';
 const Routines = ()=>{
-    return<>
+    return(
+    <>
     
-    </>
-
+    </>)
 }
 
 export default Routines

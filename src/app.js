@@ -10,10 +10,10 @@ const App = () => {
     return (
         <>
             <nav>
-                <Link exact to='/routines'>Routines</Link>-
-                <Link exact to='/activities'>Activities</Link>-
-                <Link exact to='/:formResLogin'>Sign In / Sign Up</Link>-
-                <Link to='/' className='links'> Home </Link>
+                <Link to='/' className='links'> Home </Link>||
+                <Link exact to='/routines'>Routines</Link>||
+                <Link exact to='/activities'>Activities</Link>||
+                <Link exact to='/:formResLogin'>Sign In / Sign Up</Link>
             </nav>
 
             <Route exact path='/'>
