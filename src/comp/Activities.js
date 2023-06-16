@@ -24,6 +24,7 @@ const Activities = () => {
     <h1>
     Hello
       </h1>
+      <p>{}</p>
     </>
   );
 };
