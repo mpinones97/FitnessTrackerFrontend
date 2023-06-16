@@ -10,18 +10,18 @@ const App = () => {
     return (
         <>
             <nav>
-                <Link to='/' className='links'> Home </Link>||
+                <Link exact to='/' className='links'> Home </Link>||
                 <Link exact to='/routines'>Routines</Link>||
                 <Link exact to='/activities'>Activities</Link>||
-                <Link exact to='/:formResLogin'>Sign In / Sign Up</Link>
+                <Link exact to='/users/:formResLogin'>Sign In / Sign Up</Link>
             </nav>
 
             <Route exact path='/'>
                 <Home/>
             </Route>
 
-            <Route path='/:formResLogin'>
-                <UserForm setToken={setToken} setUserData={setUserData} />
+            <Route exact path='/users/:formResLogin'>
+                <UserForm  />
             </Route>
 
             <Route exact path='/activities'>
