@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { fetchFromApi } from "../API";
 
+
+
 const Activities = () => {
 
     const [activities, setActivities] = useState([])
-
+    
     const fetchActivites = async () =>{
 
         const data = await fetchFromApi({
@@ -14,6 +16,7 @@ const Activities = () => {
         if (data){
             setActivities(data)
         }
+        console.log(data)
         
     }
     useEffect(() => {
@@ -21,9 +24,14 @@ const Activities = () => {
       }, []);
   return (
     <>
-    <h1>
-    Hello
-      </h1>
+        {
+              activities.map((activity, index) =>(
+                  <div className='tiles' key = {activities.id ?? index}>
+                    <div>{activity.name}</div>
+                    <div>{activity.description}</div>
+                </div>
+              )) 
+        }
     </>
   );
 };

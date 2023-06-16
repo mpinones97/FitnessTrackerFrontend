@@ -7,3 +7,10 @@
     margin-top: 0px;
     padding: 25px;
 }
+
+.tiles {
+    padding: 10px;
+    border: 2px solid black;
+    box-shadow: 0 3px 10px lightblue;
+    margin: 20px 300px;
+}

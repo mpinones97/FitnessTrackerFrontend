@@ -1,5 +1,5 @@
-export { default as Home } from './home'
-export {default as UserForm} from './userform'
+export { default as Home } from './Home'
+export {default as UserForm} from './UserForm'
 export {default as Activities} from './Activities'
-export {default as MyRoutines} from './myRoutines'
+export {default as MyRoutines} from './MyRoutines'
 export {default as Routines} from './Routines'
