@@ -19,9 +19,16 @@ const Routines = ()=>{
 
     return(
     <> 
-    <h1>
-    Routines 
-    </h1>
+    <h1>Routines</h1>
+    
+        {routines.map((routine, index) =>{
+            <div className='tiles' key = {routines.id ?? index}>
+            <div>{routine.name}</div>
+            <div>{routine.goal}</div>
+        </div>
+        })}
+    
+    
     </>)
 }
 

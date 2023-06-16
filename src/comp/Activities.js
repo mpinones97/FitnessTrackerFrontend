@@ -22,9 +22,14 @@ const Activities = () => {
   return (
     <>
     <h1>
-    Hello
+    Activities
       </h1>
-      <p>{}</p>
+       {activities.map((activity, index) =>(
+                  <div className='tiles' key = {activities.id ?? index}>
+                    <div>{activity.name}</div>
+                    <div>{activity.description}</div>
+                </div>
+              ))}
     </>
   );
 };
