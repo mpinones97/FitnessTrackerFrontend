@@ -1,26 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { fetchFromApi } from "../API";
 
 const Activities = () => {
 
     const [activities, setActivities] = useState([])
 
     const fetchActivites = async () =>{
-        try{
-            const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/activities')
-            const result = await response.json()
-            console.log(result)
-        } catch(error){
-            console.error(error)
-        }
-    }
 
+        const data = await fetchFromApi({
+            endPoint: 'activities'
+        })
+        console.log(data)
+        if (data){
+            setActivities(data)
+        }
+        
+    }
+    useEffect(() => {
+        fetchActivites();
+      }, []);
   return (
     <>
     <h1>
-      Activities
+    Hello
       </h1>
     </>
   );
 };
 
 export default Activities;
+
+

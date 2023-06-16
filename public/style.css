@@ -1,0 +1,9 @@
+*{
+    margin: 0;
+}
+
+.nav {
+    background-color: lightblue;
+    margin-top: 0px;
+    padding: 25px;
+}

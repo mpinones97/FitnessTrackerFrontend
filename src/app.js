@@ -9,11 +9,11 @@ const App = () => {
     
     return (
         <>
-            <nav>
-                <Link exact to='/' className='links'> Home </Link>||
-                <Link exact to='/routines'>Routines</Link>||
-                <Link exact to='/activities'>Activities</Link>||
-                <Link exact to='/users/:formResLogin'>Sign In / Sign Up</Link>
+            <nav className="nav">
+                <Link to='/'> Home </Link>||
+                <Link to='/routines'>Routines</Link>||
+                <Link to='/activities'>Activities</Link>||
+                <Link to='/users/:formResLogin'>Sign In / Sign Up</Link>
             </nav>
 
             <Route exact path='/'>

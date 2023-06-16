@@ -1,4 +1,4 @@
-const baseApiUrl = "https://fitnesstrac-kr.herokuapp.com/api/";
+const baseApiUrl = "https://fitnesstrac-kr.herokuapp.com/api";
 const API_ENDPOINTS = {
     register: '/users/register',
     login: '/users/login',
@@ -14,18 +14,37 @@ const API_ENDPOINTS = {
 }
 
 const getURL = (endPoint) => { 
-const path = API_ENDPOINTS [endPoint]
+const path = API_ENDPOINTS[endPoint]
     if (!path){
     throw new Error(`invalidEndpoint`) 
     } 
-    return baseApiUrl+path
+    return(
+        baseApiUrl + path
+        );
 } 
 
 const getOptions = (method, body, token) => ( {
-    method: method ? method.toUpperCase() : `GET`,
+    method: method ? method.toUpperCase() : 'GET',
     headers: {
         'Content-Type':'application/json',
-        ...(token && {Authorization: `Bearer ${token}`}),
+        ...(token && {'Authorization': `Bearer ${token}`}),
     },
+    ...(body && {body: JSON.stringify(body)})
 })
 
+export const fetchFromApi = async ({ endPoint, method, body, token }) => {
+    try {
+      const result = await fetch(
+        getURL(endPoint),
+        getOptions(method, body, token)
+      );
+      const response = await result.json();
+      if (response.error) {
+        alert(response.error.message);
+        throw response.error;
+      }
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  }
