@@ -1,4 +1,4 @@
-const baseApiUrl = "https://fitnesstrac-kr.herokuapp.com/api";
+const BASE_URL = "https://fitnesstrac-kr.herokuapp.com/api";
 const API_ENDPOINTS = {
     register: '/users/register',
     login: '/users/login',
@@ -19,7 +19,7 @@ const path = API_ENDPOINTS[endPoint]
     throw new Error(`invalidEndpoint`) 
     } 
     return(
-        baseApiUrl + path
+        BASE_URL + path
         );
 } 
 

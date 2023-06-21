@@ -25,9 +25,22 @@ const Activities = () => {
   return (
     <>
     <h1>
-    Hello
+    Activities
       </h1>
-      <p>{}</p>
+      <div>
+      {activities.length ? (
+        activities.map(({ id, name, description }, idx) => (
+          <div key={id ?? idx}>
+            <h2>{name}</h2>
+            <h3>{description}</h3>
+            <h4>Id:{id}</h4>
+            <br></br>
+          </div>
+        ))
+      ) : (
+        <p>No activities found.</p>
+      )}
+    </div>
     </>
   );
 };

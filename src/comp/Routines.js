@@ -21,12 +21,26 @@ const Routines = ()=>{
     <> 
     <h1>Routines</h1>
     
-        {routines.map((routine, index) =>{
-            <div className='tiles' key = {routines.id ?? index}>
-            <div>{routine.name}</div>
-            <div>{routine.goal}</div>
+    <div>
+        <div>
+          {routines.length ? (
+            routines.map(({ id, creatorId, creatorName, goal, isPublic, name }, idx) => (
+              <div key={id ?? idx}>
+                <h2>{name}</h2>
+                <h3>{goal}</h3>
+                <h4>Id:{id}</h4>
+                <h4>Public: {isPublic}</h4>
+                   <h4>Creator Id: {creatorId}</h4>
+                   <h4>Creator Name: {creatorName}</h4>
+                   <br></br>
+              </div>
+            ))
+          ) : (
+            <p>No Routines found.</p>
+          )}
         </div>
-        })}
+      </div>
+        
     
     
     </>)
