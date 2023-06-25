@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { fetchFromApi } from '../API';
+import { fetchFromAPI } from '../API';
 const Routines = ()=>{
     const [routines, setRoutines] = useState ([])
     const fetchRoutines = async  () => {
-    const  data = await fetchFromApi({
+    const  data = await fetchFromAPI({
         endPoint: 'routines'
     }) 
     console.log(data);

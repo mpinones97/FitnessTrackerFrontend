@@ -1,12 +1,21 @@
 import React from "react";
 
 const Home = () => {
-    return(
-        <>
-            <h1> Welcome to Fitness Tracker </h1>
-        </>
-    )
-}
+  return (
+    <>
+      <h1> Welcome to Fitness Tracker </h1>
+      <a href="">
+        <img
+          src="https://cdn.dribbble.com/users/1233499/screenshots/4571542/photoshop1.gif"
+          alt="Fitness Tracker"
+          width="750"
+          height="500"
+        />
+      </a>
+      <p>**Development is still in progress, and it will be completed soon.</p>
+          </>
+  );
+};
 
 export default Home;
 

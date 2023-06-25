@@ -81,7 +81,7 @@
 
 import React, { useState } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { fetchFromApi } from "../API";
+import { fetchFromAPI } from "../API";
 
 const BASE_URL = "https://fitnesstrac-kr.herokuapp.com/api/users";
 
@@ -90,6 +90,7 @@ const UserForm = ({ setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -103,12 +104,15 @@ const UserForm = ({ setToken }) => {
       const options = {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(requestBody)
+        body: JSON.stringify(requestBody),
       };
 
-      const response = await fetch(BASE_URL + (actionType === "register" ? "/register" : "/login"), options);
+      const response = await fetch(
+        BASE_URL + (actionType === "register" ? "/register" : "/login"),
+        options
+      );
       const data = await response.json();
 
       if (response.ok) {
@@ -116,6 +120,7 @@ const UserForm = ({ setToken }) => {
         history.push("/routines");
       } else {
         console.log("Error:", data.message);
+        setErrorMessage(data.message);
       }
     } catch (error) {
       console.log("Error:", error.message);
@@ -124,39 +129,45 @@ const UserForm = ({ setToken }) => {
 
   return (
     <>
-      <h1 className="headers">{actionType === "register" ? "Register" : "Log in"}</h1>
+      <h1 className="headers">
+        {actionType === "register" ? "Register" : "Log in"}
+      </h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='username'>User Name</label>
-        <input 
-          type='text'
-          name='username'
+        <label htmlFor="username">User Name</label>
+        <input
+          type="text"
+          name="username"
           value={username}
-          onChange={event => setUsername(event.target.value)}
-          minLength='3'
-          maxLength='20'
+          onChange={(event) => setUsername(event.target.value)}
+          minLength="3"
+          maxLength="20"
           required
         />
-        <label htmlFor='password'>Password</label>
-        <input 
-          type='password'
-          name='password'
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          name="password"
           value={password}
-          onChange={event => setPassword(event.target.value)}
-          minLength='8'
-          maxLength='20'
+          onChange={(event) => setPassword(event.target.value)}
+          minLength="8"
+          maxLength="20"
           required
         />
-        <button type='submit'>SUBMIT</button>
+        {errorMessage && <p className="error">{errorMessage}</p>} {/* Display error message */}
+        <button type="submit">SUBMIT</button>
 
-        <br></br>
+        <br />
 
-        {actionType === 'register' 
-          ? (<Link to="/users/login">Have an Account? Sign In</Link>) 
-          : (<Link to="/users/register">Need an Account? Register Here!</Link>)
-        }
+        {actionType === "register" ? (
+          <Link to="/users/login">Have an Account? Sign In</Link>
+        ) : (
+          <Link to="/users/register">Need an Account? Register Here!</Link>
+        )}
       </form>
     </>
   );
 };
 
 export default UserForm;
+
+
